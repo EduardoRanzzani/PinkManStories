@@ -1732,9 +1732,11 @@ GameObject:
   - component: {fileID: 347705604}
   - component: {fileID: 347705603}
   - component: {fileID: 347705605}
+  - component: {fileID: 347705607}
+  - component: {fileID: 347705606}
   m_Layer: 0
   m_Name: Saw
-  m_TagString: Untagged
+  m_TagString: Saw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1799,7 +1801,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347705602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.26, y: 1.99, z: 0}
+  m_LocalPosition: {x: 0.26, y: 1.99, z: 0}
   m_LocalScale: {x: 1.64484, y: 1.64484, z: 1.64484}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1818,6 +1820,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f848ca5155c41fb489e9316c587ae109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
+  moveTime: 3
+--- !u!95 &347705606
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347705602}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b932a58b05804146822ed004a7a9d01, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &347705607
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347705602}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.18999998
 --- !u!1 &354831239
 GameObject:
   m_ObjectHideFlags: 0
@@ -10198,7 +10238,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Lvl_02
+          m_StringArgument: Lvl_03
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1446137895
