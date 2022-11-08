@@ -100,10 +100,10 @@ public class PlayerController : MonoBehaviour
     }
   }
 
-  void PlayerDie()
+  public void PlayerDie()
   {
     animator.SetTrigger("Die");
     GameController.instance.ShowGameOver();
-    Destroy(gameObject, 0.5f);
+    Destroy(gameObject, 0.33f);
   }
 }
