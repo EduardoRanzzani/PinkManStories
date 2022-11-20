@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Spike
   - Saw
+  - Fan
+  - Ground
+  - Borders
   layers:
   - Default
   - TransparentFX

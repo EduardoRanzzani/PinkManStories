@@ -6,31 +6,31 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public int totalScore;
-    public Text scoreText;
-    public GameObject gameOver;
+  public int totalScore;
+  public Text scoreText;
+  public GameObject gameOver;
 
-    public static GameController instance;
+  public static GameController instance;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        instance = this;
-    }
+  // Start is called before the first frame update
+  void Start()
+  {
+    instance = this;
+  }
 
-    public void UpdateScoreText()
-    {
-        scoreText.text = totalScore.ToString();
-    }
+  public void UpdateScoreText()
+  {
+    scoreText.text = totalScore.ToString();
+  }
 
-    public void ShowGameOver()
-    {   
-        gameOver.SetActive(true);
-    }
+  public void ShowGameOver()
+  {
+    gameOver.SetActive(true);
+  }
 
-    public void RestartLevel(string lvlName)
-    {
-        SceneManager.LoadScene(lvlName);
-    }
+  public void RestartLevel(string lvlName)
+  {
+    SceneManager.LoadScene(lvlName);
+  }
 
 }

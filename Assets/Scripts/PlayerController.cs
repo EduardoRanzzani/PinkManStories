@@ -8,8 +8,10 @@ public class PlayerController : MonoBehaviour
   public float speed;
   public float jumpForce;
 
-  public bool isJumping;
+  public bool isJumping = false;
   public bool isDoubleJump;
+  private bool isBlowing = false;
+  private int ordem = 0;
 
   private new Rigidbody2D rigidbody2D;
   private Animator animator;
@@ -34,8 +36,11 @@ public class PlayerController : MonoBehaviour
   void Move()
   {
     float horizontal = Input.GetAxis("Horizontal");
-    Vector3 movement = new(horizontal, 0f, 0f);
-    transform.position += speed * Time.deltaTime * movement;
+    rigidbody2D.velocity = new Vector2(horizontal * speed, rigidbody2D.velocity.y);
+
+    // Move o personagem em uma posição -- sem física
+    // Vector3 movement = new(horizontal, 0f, 0f);
+    // transform.position += speed * Time.deltaTime * movement;
 
     if (horizontal > 0f)
     {
@@ -55,10 +60,11 @@ public class PlayerController : MonoBehaviour
 
   void Jump()
   {
-    if (Input.GetButtonDown("Jump"))
+    if (Input.GetButtonDown("Jump") && !isBlowing)
     {
       if (!isJumping)
       {
+        isJumping = true;
         rigidbody2D.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         animator.SetBool("Jump", true);
         isDoubleJump = true;
@@ -77,26 +83,49 @@ public class PlayerController : MonoBehaviour
 
   void OnCollisionEnter2D(Collision2D collision)
   {
-    if (collision.gameObject.layer == 8)
+    if (collision.gameObject.CompareTag("Ground"))
     {
       isJumping = false;
       animator.SetBool("Jump", false);
     }
-    else if (collision.gameObject.CompareTag("Spike"))
+
+    if (collision.gameObject.CompareTag("Spike"))
     {
       PlayerDie();
     }
-    else if (collision.gameObject.CompareTag("Saw"))
+
+    if (collision.gameObject.CompareTag("Saw"))
     {
       PlayerDie();
     }
   }
 
-  void OnCollisionExit2D(Collision2D collision)
+  // void OnCollisionExit2D(Collision2D collision)
+  // {
+  //   if (collision.gameObject.CompareTag("Ground"))
+  //   {
+  //     isJumping = true;
+  //   }
+  // }
+
+  void OnTriggerExit2D(Collider2D collider)
   {
-    if (collision.gameObject.layer == 8)
+    if (collider.gameObject.CompareTag("Ground"))
     {
       isJumping = true;
+    }
+
+    if (collider.gameObject.CompareTag("Fan"))
+    {
+      isBlowing = false;
+    }
+  }
+
+  void OnTriggerStay2D(Collider2D collider)
+  {
+    if (collider.gameObject.CompareTag("Fan"))
+    {
+      isBlowing = true;
     }
   }
 
